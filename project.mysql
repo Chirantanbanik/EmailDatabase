@@ -1,0 +1,7 @@
+Create table users(
+    email VARCHAR(255) Primary key,
+	created_at Timestamp Default Now()
+);
+
+Insert into users(email)
+Values("Chirantanbanik98@gmail.com");
