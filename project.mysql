@@ -1,3 +1,7 @@
+create database email_database;
+use email_database;
+select database();
+
 Create table users(
     email VARCHAR(255) Primary key,
 	created_at Timestamp Default Now()
