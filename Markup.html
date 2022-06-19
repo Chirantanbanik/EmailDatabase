@@ -4,8 +4,8 @@
 <div class="flex-container">
     <div class="container">
         <h1>Register</h1>
-        <p class="lead">Enter your email to Register <strong><%=count%></strong> users have already Registered. </p>
-        <form method="POST" action='/register'>
+        <p class="lead">Enter your email to Register <strong><%=count%></strong> users have already Registered. </p>     //  inside strong tag we specify the count so we will get count from line 25 in email.js
+        <form method="POST" action='/register'>              
             <input type="text" name="email" class="form" placeholder="Enter Your Email">
             <button>Join Now</button>
         </form>
