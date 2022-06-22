@@ -1,6 +1,8 @@
-var express = require('express');  // importing express and saving it.
-var mysql = require('mysql');      // importing mysql.
-var bodyParser = require("body-parser");   // importing bodyparser
+// line 3-5 importing express, mysql and bodyparser and saving it.
+
+var express = require('express');  
+var mysql = require('mysql');      
+var bodyParser = require("body-parser");   
 var email = express();  // executing the entire express package that we have just imported.
 
 email.set("view engine", "ejs");   // set some settings in our app
@@ -14,19 +16,18 @@ var connection = mysql.createConnection({     // line 10-14 for Node.js and MySQ
 });
 
 
-email.get("/", function(request, response){   // route 
+email.get("/", function(request, response){   // "/" is the home route
 	
-	var q = "Select count(*) As count From users";   // Find count of users in the database
-	connection.query(q, function(err, results){
+	var q = "Select count(*) As count From users";   // mysql query to find count of users in the database
+	connection.query(q, function(err, results){      // function callback
 		if(err) throw err;
-		// Respond with that count
-		var count = results[0].count;
+		var count = results[0].count;     // Respond with that count
 		//response.send("We have" + count + "users in the database"); 
-		response.render("home", {count: count});
+		response.render("home", {count: count});   // this is all about the ejs file & the count should be given in the ejs file, 1st count is the label and 2nd one is the value.
 	});
 });
 
-email.post("/register", function(request, response){
+email.post("/register", function(request, response){       // data from the form gets there through the post route
 
 	
 var person = {
