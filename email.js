@@ -27,16 +27,16 @@ email.get("/", function(request, response){   // "/" is the home route
 	});
 });
 
-email.post("/register", function(request, response){       // form data makes to our server 
+email.post("/register", function(request, response){       // form data makes to our server and after we enter the email it will hit post route /register
 
 	
-var person = {
-	email: request.body.email        // extracting form data from Request Body and name = email is in ejs file
+var person = {                            // this is preparing the data to be inserted
+	email: request.body.email        // extracting form data from Request Body and name = email is in ejs file line no. 11
 };    
 	
 connection.query('Insert into users Set ?', person, function(err, result) {      // for inserting new email
   if(err) throw err;
-  response.redirect("/");
+  response.redirect("/");           // after inserting we are redirecting back to "/" on line no. 19 to start the whole process again select count and render the home page with that count 
     });
 });
 	
