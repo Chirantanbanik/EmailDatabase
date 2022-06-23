@@ -6,7 +6,7 @@ var bodyParser = require("body-parser");
 var email = express();  // executing the entire express package that we have just imported.
 
 email.set("view engine", "ejs");   // set some settings in our app
-email.use(bodyParser.urlencoded({extended: true}));
+email.use(bodyParser.urlencoded({extended: true}));    // we have to tell express which is app i.e. email to use it
 email.use(express.static(__dirname + "/public"));    // we kept the static files in public folder so taking it from there for using.
 
 var connection = mysql.createConnection({     // line 10-14 for Node.js and MySQL connection
@@ -27,14 +27,14 @@ email.get("/", function(request, response){   // "/" is the home route
 	});
 });
 
-email.post("/register", function(request, response){       // data from the form gets there through the post route
+email.post("/register", function(request, response){       // form data makes to our server 
 
 	
 var person = {
-	email: request.body.email        // For Inserting new email 
+	email: request.body.email        // extracting form data from Request Body and name = email is in ejs file
 };    
 	
-connection.query('Insert into users Set ?', person, function(err, result) {          // for inserting new email
+connection.query('Insert into users Set ?', person, function(err, result) {      // for inserting new email
   if(err) throw err;
   response.redirect("/");
     });
