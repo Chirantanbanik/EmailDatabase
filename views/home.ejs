@@ -7,7 +7,7 @@
     <div class="container">
         <h1>Register here</h1>
         <p class="lead">Enter your email to Register. <strong><%= count %></strong> users have already Registered. </p>   // count is the ejs and we have done this in line 26 of email.js
-        <form method="POST" action='/register'>
+        <form method="POST" action='/register'>      // We are using POST because it will allow us to send the form data
             <input type="text" name="email" class="form" placeholder="Enter Your Email">
             <button>Join Now</button>
         </form>
